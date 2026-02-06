@@ -48,6 +48,17 @@ public class PizzaOrderController {
             return "order_form";
         }
 
+        if (pizzaOrder.getQuantity() < 1 || pizzaOrder.getQuantity() > 10) {
+
+            model.addAttribute("error", "Quantity must be between 1 and 10.");
+
+            model.addAttribute("sizes", PizzaSize.values());
+            model.addAttribute("crusts", CrustType.values());
+            model.addAttribute("toppings", Topping.values());
+
+            return "order_form";
+        }
+
         if (pizzaOrder.isDelivery()){
             if (pizzaOrder.getDeliveryAddress() == null || pizzaOrder.getDeliveryAddress().trim().isEmpty()) {
 
