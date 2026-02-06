@@ -22,14 +22,16 @@ public class PizzaOrderController {
 
     @ModelAttribute("pizzaOrder")
     public PizzaOrder pizzaOrder() {
-        return new PizzaOrder();
+        PizzaOrder o = new PizzaOrder();
+        o.setQuantity(1);
+        return o;
     }
 
     @GetMapping("/order")
     public String order(Model model) {
         model.addAttribute("sizes", PizzaSize.values());
-        //model.addAttribute("crusts", CrustType.values());
-        //model.addAttribute("toppings", Topping.values());
+        model.addAttribute("crusts", CrustType.values());
+        model.addAttribute("toppings", Topping.values());
         return "order_form";
     }
 
