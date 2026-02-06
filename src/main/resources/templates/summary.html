@@ -5,7 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Summary</h1>
+<h1>Order Summary</h1>
 
+<p>Name: <span th:text="${order.customerName}"></span></p>
+<p>Size: <span th:text="${order.size}"></span></p>
+<p>Quantity: <span th:text="${order.quantity}"></span></p>
+
+<hr>
+
+<p>Subtotal: $<span th:text="${order.subtotal}"></span></p>
+<p>Discount: $<span th:text="${order.discountAmount}"></span></p>
+<p>Tax: $<span th:text="${order.tax}"></span></p>
+
+<h3>Total: $<span th:text="${order.total}"></span></h3>
+
+<a href="/order">New Order</a>
+<br>
+<a href="/history">View History</a>
 </body>
 </html>
