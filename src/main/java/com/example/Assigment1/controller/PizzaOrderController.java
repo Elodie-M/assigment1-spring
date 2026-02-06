@@ -38,6 +38,16 @@ public class PizzaOrderController {
     @PostMapping("/order")
     public String submitOrder(PizzaOrder pizzaOrder, Model model) {
 
+        if (pizzaOrder.getCustomerName() == null || pizzaOrder.getCustomerName().trim().isEmpty()) {
+            model.addAttribute("error", "Customer name is required.");
+
+            model.addAttribute("sizes", PizzaSize.values());
+            model.addAttribute("crusts", CrustType.values());
+            model.addAttribute("toppings", Topping.values());
+
+            return "order_form";
+        }
+
         if (pizzaOrder.isDelivery()){
             if (pizzaOrder.getDeliveryAddress() == null || pizzaOrder.getDeliveryAddress().trim().isEmpty()) {
 
