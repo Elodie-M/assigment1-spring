@@ -39,7 +39,7 @@ public class PizzaOrder {
         this.customerName = customerName;
     }
 
-    public PizzaSize setsSize(){
+    public PizzaSize getSize(){
         return size;
     }
     public void setSize(PizzaSize size){
