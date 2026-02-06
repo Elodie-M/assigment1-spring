@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Order form</h1>
+<p th:if="${error}" th:text="${error}"></p>
 
 <form th:action="@{/order}" th:object="${pizzaOrder}" method="post">
 
@@ -36,6 +37,14 @@
         <br>
     </div>
     <br>
+
+    Delivery:
+    <input type="checkbox" th:field="*{delivery}">
+    <br><br>
+
+    Delivery Address:
+    <input type="text" th:field="*{deliveryAddress}">
+    <br><br>
 
     <button type="submit">Submit Order</button>
 

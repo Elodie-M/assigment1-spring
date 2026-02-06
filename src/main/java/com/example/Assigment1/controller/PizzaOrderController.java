@@ -38,6 +38,18 @@ public class PizzaOrderController {
     @PostMapping("/order")
     public String submitOrder(PizzaOrder pizzaOrder, Model model) {
 
+        if (pizzaOrder.isDelivery()){
+            if (pizzaOrder.getDeliveryAddress() == null || pizzaOrder.getDeliveryAddress().trim().isEmpty()) {
+
+                model.addAttribute("error", "Delivery address is required if delivery is selected.");
+
+                model.addAttribute("sizes", PizzaSize.values());
+                model.addAttribute("crusts", CrustType.values());
+                model.addAttribute("toppings", Topping.values());
+
+                return "order_form";
+            }
+        }
         PizzaOrder savedOrder = service.placeOrder(pizzaOrder);
         model.addAttribute("order", savedOrder);
         return "summary";
