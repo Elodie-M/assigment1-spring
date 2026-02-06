@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Order form</title>
@@ -7,10 +7,10 @@
 <body>
 <h1>Order form</h1>
 
-<form action="/order" method="post">
+<form th:action="@{/order}" th:object="${pizzaOrder}" method="post">
 
     Name:
-    <input type="text" name="customerName"><br><br>
+    <input type="text" th:field="*{customerName}"><br><br>
 
     Quantity:
     <input type="number" name="quantity" value="1"><br><br>
