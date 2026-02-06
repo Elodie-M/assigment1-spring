@@ -26,8 +26,8 @@ public class PizzaOrderController {
     }
 
     @GetMapping("/order")
-    public String order() {
-        //model.addAttribute("sizes", PizzaSize.values());
+    public String order(Model model) {
+        model.addAttribute("sizes", PizzaSize.values());
         //model.addAttribute("crusts", CrustType.values());
         //model.addAttribute("toppings", Topping.values());
         return "order_form";
