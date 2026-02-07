@@ -11,7 +11,8 @@
 
     <ul th:if="${orders != null}">
         <li th:each="o : ${orders}">
-            <span th:text="${o.id}"></span>
+            <span th:text="${o.id}"></span> -
+            <span th:text="${o.orderTime}">time</span> -
             <span th:text="${o.customerName}">Name</span> -
             <span th:text="${o.size}">SIZE</span> -
             <span th:text="${o.crust}">CRUST</span> -
