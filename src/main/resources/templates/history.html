@@ -14,7 +14,18 @@
             <span th:text="${o.id}"></span>
             <span th:text="${o.customerName}">Name</span> -
             <span th:text="${o.size}">SIZE</span> -
-            Qty <span th:text="${o.quantity}">1</span> -
+            <span th:text="${o.crust}">CRUST</span> -
+            <span th:text="${o.delivery ? 'Delivery' : 'Pickup'}">Pickup</span>
+            <span th:if="${o.delivery}">
+    ( <span th:text="${o.deliveryAddress}">address</span> )</span>
+            - Toppings:
+            <span th:if="${#lists.isEmpty(o.toppings)}">None</span>
+            <span th:if="${!#lists.isEmpty(o.toppings)}">
+    <span th:each="t, stat : ${o.toppings}">
+        <span th:text="${t}">TOPPING</span><span th:if="${!stat.last}">, </span>
+    </span>
+</span>
+            - Qty <span th:text="${o.quantity}">1</span> -
             Total $<span th:text="${o.total == null ? 0 : o.total}">0</span>
         </li>
     </ul>
