@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <h1>History</h1>
-    <p>Total orders: <span th:text="${orders.size()}">0</span></p>
+
+    <p>Total orders: <span th:text="${orders == null ? 0 : orders.size()}">0</span></p>
+
+    <ul th:if="${orders != null}">
+        <li th:each="o : ${orders}">
+            <span th:text="${o.id}"></span>
+            <span th:text="${o.customerName}">Name</span> -
+            <span th:text="${o.size}">SIZE</span> -
+            Qty <span th:text="${o.quantity}">1</span> -
+            Total $<span th:text="${o.total == null ? 0 : o.total}">0</span>
+        </li>
+    </ul>
+
+<a href="/order">New order</a>
 </body>
 </html>
