@@ -78,7 +78,7 @@ public class PizzaOrderController {
 
     @GetMapping("/summary")
     public String summary() {
-        return "summary";
+        return "redirect:/order";
     }
 
     @GetMapping("/history")
